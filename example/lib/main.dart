@@ -74,7 +74,8 @@ class _HomePageState extends State<HomePage> {
                   values: cutValues,
                   max: timeFile.toDouble(),
                   divisions: timeFile,
-                  labels: RangeLabels(_getViewTimeFromCut(cutValues.start.toInt()).toString(),
+                  labels: RangeLabels(
+                      _getViewTimeFromCut(cutValues.start.toInt()).toString(),
                       _getViewTimeFromCut(cutValues.end.toInt()).toString()),
                   onChanged: (values) {
                     setState(() => cutValues = values);
@@ -83,13 +84,15 @@ class _HomePageState extends State<HomePage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Text('Start: ${_getViewTimeFromCut(cutValues.start.toInt())}'),
+                  Text(
+                      'Start: ${_getViewTimeFromCut(cutValues.start.toInt())}'),
                   Text('End: ${_getViewTimeFromCut(cutValues.end.toInt())}'),
                 ],
               ),
               IconButton(
                   onPressed: _onPlayPreview,
-                  icon: Icon(previewPlay ? Icons.stop_circle : Icons.play_arrow)),
+                  icon:
+                      Icon(previewPlay ? Icons.stop_circle : Icons.play_arrow)),
               MaterialButton(
                 onPressed: _onCut,
                 color: Colors.blue,
@@ -102,7 +105,10 @@ class _HomePageState extends State<HomePage> {
               ),
               isCutting
                   ? Column(
-                      children: const [CircularProgressIndicator(), Text('Waitting...')],
+                      children: const [
+                        CircularProgressIndicator(),
+                        Text('Waitting...')
+                      ],
                     )
                   : Column(
                       children: [
@@ -112,7 +118,9 @@ class _HomePageState extends State<HomePage> {
                             'Time: ${outputPlayer.duration?.inMinutes ?? 0}:${outputPlayer.duration?.inSeconds ?? 0}'),
                         IconButton(
                             onPressed: _onOutputPlayPreview,
-                            icon: Icon(outputPlay ? Icons.stop_circle : Icons.play_arrow)),
+                            icon: Icon(outputPlay
+                                ? Icons.stop_circle
+                                : Icons.play_arrow)),
                       ],
                     )
             ],
@@ -159,7 +167,8 @@ class _HomePageState extends State<HomePage> {
   Future<void> _onCut() async {
     if (inputFile.path != '') {
       setState(() => isCutting = true);
-      var result = await AudioCutter.cutAudio(inputFile.path, cutValues.start, cutValues.end);
+      var result = await AudioCutter.cutAudio(
+          inputFile.path, cutValues.start, cutValues.end);
       outputFile = File(result);
       await outputPlayer.setFilePath(result);
       setState(() {

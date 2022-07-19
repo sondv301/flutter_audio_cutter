@@ -1,13 +1,14 @@
 ## Audio Cutter
 
 Cut any audio clip
+A package used to cut a segment from an audio file supported on Android
 
 ## Getting started
 
 ### Depend on it
 ```dart
 dependencies:
-  flutter_audio_cutter: ^1.0.1
+  flutter_audio_cutter: ^1.0.3+1
 ```
 
 ## Usage
@@ -32,4 +33,4 @@ var result = await AudioCutter.cutAudio(pathToFile, startPoint, endPoint);
 ...
 ```
 ## Example
-![](assets/images/scr1.png "Example")
+![](https://raw.githubusercontent.com/sondv301/flutter_audio_cutter/main/assets/images/scr1.png "Example")

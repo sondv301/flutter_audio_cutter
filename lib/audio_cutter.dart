@@ -1,9 +1,7 @@
 library audio_cutter;
 
 import 'dart:io';
-
 import 'package:ffmpeg_kit_flutter/ffmpeg_kit.dart';
-import 'package:flutter/foundation.dart';
 import 'package:path_provider/path_provider.dart';
 
 class AudioCutter {
@@ -13,7 +11,8 @@ class AudioCutter {
       throw ArgumentError('The starting and ending points cannot be negative');
     }
     if (start > end) {
-      throw ArgumentError('The starting point cannot be greater than the ending point');
+      throw ArgumentError(
+          'The starting point cannot be greater than the ending point');
     }
 
     final Directory dir = await getTemporaryDirectory();
