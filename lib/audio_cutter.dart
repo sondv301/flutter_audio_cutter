@@ -6,7 +6,8 @@ import 'package:path_provider/path_provider.dart';
 
 class AudioCutter {
   /// Return audio file path after cutting
-  static Future<String> cutAudio(String path, double start, double end) async {
+  static Future<String> cutAudio(String path, double start, double end,
+      {String? outputDirPath}) async {
     if (start < 0 || end < 0) {
       throw ArgumentError('The starting and ending points cannot be negative');
     }
@@ -15,9 +16,16 @@ class AudioCutter {
           'The starting point cannot be greater than the ending point');
     }
 
-    final Directory dir = await getTemporaryDirectory();
-    final outPath = "${dir.path}/audio_cutter/output.mp3";
-    await File(outPath).create(recursive: true);
+    String outPath = "";
+
+    if (outputDirPath != null) {
+      outPath = outputDirPath;
+      await File(outPath).create(recursive: true);
+    } else {
+      final Directory dir = await getTemporaryDirectory();
+      final outPath = "${dir.path}/audio_cutter/output.mp3";
+      await File(outPath).create(recursive: true);
+    }
 
     var cmd =
         "-y -i \"$path\" -vn -ss $start -to $end -ar 16k -ac 2 -b:a 96k -acodec copy $outPath";
