@@ -20,7 +20,7 @@ class AudioCutter {
     var path = Platform.isAndroid
         ? await getExternalStorageDirectory()
         : await getApplicationSupportDirectory();
-    final outPath = "${path.path}/trimmed.mp3";
+    final outPath = "${path!.path}/trimmed.mp3";
     await File(outPath).create(recursive: true);
 
     var cmd =
