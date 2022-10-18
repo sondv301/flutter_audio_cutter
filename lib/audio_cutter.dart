@@ -15,8 +15,12 @@ class AudioCutter {
           'The starting point cannot be greater than the ending point');
     }
 
+//  /storage/emulated/0/Android/data/com.example.voxpod/files/question1.mp4
     final Directory dir = await getTemporaryDirectory();
-    final outPath = "${dir.path}/audio_cutter/output.mp3";
+    var path = Platform.isAndroid
+        ? await getExternalStorageDirectory()
+        : await getApplicationSupportDirectory();
+    final outPath = "${path.path}/trimmed.mp3";
     await File(outPath).create(recursive: true);
 
     var cmd =
