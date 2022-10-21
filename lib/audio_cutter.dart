@@ -5,6 +5,7 @@ import 'package:ffmpeg_kit_flutter/ffmpeg_kit.dart';
 import 'package:path_provider/path_provider.dart';
 
 class AudioCutter {
+  
   /// Return audio file path after cutting
   static Future<String> cutAudio(String path, double start, double end) async {
     if (start < 0 || end < 0) {
@@ -20,7 +21,7 @@ class AudioCutter {
     var path = Platform.isAndroid
         ? await getExternalStorageDirectory()
         : await getApplicationSupportDirectory();
-    final outPath = "${path!.path}/trimmed.wav";
+    final outPath = "${path!.path}/trimmed.mp3";
     await File(outPath).create(recursive: true);
 
     var cmd =
