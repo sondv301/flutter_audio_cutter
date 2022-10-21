@@ -33,7 +33,7 @@ class AudioCutter {
 //         "-y -i \"$path\" -vn -ss $start -to $end -ar 16k -ac 2 -b:a 96k -acodec copy $outPath";
     var cmd =  "-y -i \"$path\" -vn -ss $start -to $end -ar 16k -ac 2 -b:a 96k -acodec libmp3lame $outPath";
    // await FFmpegKit.execute(cmd);
-      log(cmd);
+      
 
    FFmpegKit.executeAsync(cmd, (session) async {
      final returnCode = await session.getReturnCode();
