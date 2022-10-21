@@ -22,11 +22,25 @@ class AudioCutter {
         ? await getExternalStorageDirectory()
         : await getApplicationSupportDirectory();
     final outPath = "${path!.path}/trimmed.mp3";
+    try {
+    await File(outPath).delete();
+  } catch (e) {
+    print("Delete Error");
+  }
     await File(outPath).create(recursive: true);
 
-    var cmd =
-        "-y -i \"$path\" -vn -ss $start -to $end -ar 16k -ac 2 -b:a 96k -acodec copy $outPath";
-    await FFmpegKit.execute(cmd);
+//     var cmd =
+//         "-y -i \"$path\" -vn -ss $start -to $end -ar 16k -ac 2 -b:a 96k -acodec copy $outPath";
+    var cmd =  "-y -i \"$path\" -vn -ss $start -to $end -ar 16k -ac 2 -b:a 96k -acodec libmp3lame $outPath";
+   // await FFmpegKit.execute(cmd);
+      log(cmd);
+
+   FFmpegKit.executeAsync(cmd, (session) async {
+     final returnCode = await session.getReturnCode();
+
+     print("returnCode $returnCode");
+  });
+
 
     return outPath;
   }
