@@ -24,7 +24,10 @@ class AudioCutter {
     String extension = p.extension(path);
 
     ///Delete previous file with same name
-    File("${directory!.path}/trimmed$extension").delete();
+    var fExisting = File("${directory!.path}/trimmed$extension");
+    if (await fExisting.exists()) {
+      await fExisting.delete();
+    }
 
     String outPath = "";
 
@@ -33,7 +36,7 @@ class AudioCutter {
       await File(outPath).create(recursive: true);
     } else {
       final Directory dir = await getTemporaryDirectory();
-      final outPath = "${dir.path}/audio_cutter/output.mp3";
+      outPath = "${dir.path}/audio_cutter/output.mp3";
       await File(outPath).create(recursive: true);
     }
 
