@@ -19,8 +19,10 @@ class AudioCutter {
     var directory = Platform.isAndroid
         ? await getExternalStorageDirectory()
         : await getApplicationSupportDirectory();
+
     ///to determine the exact -acodec of the audio file
-    String extension =  p.extension(path);
+    String extension = p.extension(path);
+
     ///Delete previous file with same name
     File("${directory!.path}/trimmed$extension").delete();
 

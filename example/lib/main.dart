@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_audio_cutter/audio_cutter.dart';
 import 'package:just_audio/just_audio.dart';
@@ -104,8 +105,8 @@ class _HomePageState extends State<HomePage> {
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               isCutting
-                  ? Column(
-                      children: const [
+                  ? const Column(
+                      children: [
                         CircularProgressIndicator(),
                         Text('Waitting...')
                       ],
@@ -182,10 +183,14 @@ class _HomePageState extends State<HomePage> {
     if (outputFile.path != '') {
       setState(() => outputPlay = !outputPlay);
       if (outputPlayer.playing) {
-        print("stop");
+        if (kDebugMode) {
+          print("stop");
+        }
         outputPlayer.stop();
       } else {
-        print("play");
+        if (kDebugMode) {
+          print("play");
+        }
         outputPlayer.play();
       }
     }
