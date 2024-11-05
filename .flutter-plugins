@@ -1,8 +1,7 @@
 # This is a generated file; do not edit or check into version control.
-ffmpeg_kit_flutter=/Users/mayur/.pub-cache/hosted/pub.dartlang.org/ffmpeg_kit_flutter-4.5.1/
-path_provider=/Users/mayur/.pub-cache/hosted/pub.dartlang.org/path_provider-2.0.11/
-path_provider_android=/Users/mayur/.pub-cache/hosted/pub.dartlang.org/path_provider_android-2.0.17/
-path_provider_ios=/Users/mayur/.pub-cache/hosted/pub.dartlang.org/path_provider_ios-2.0.11/
-path_provider_linux=/Users/mayur/.pub-cache/hosted/pub.dartlang.org/path_provider_linux-2.1.7/
-path_provider_macos=/Users/mayur/.pub-cache/hosted/pub.dartlang.org/path_provider_macos-2.0.6/
-path_provider_windows=/Users/mayur/.pub-cache/hosted/pub.dartlang.org/path_provider_windows-2.1.1/
+ffmpeg_kit_flutter=/Users/hamidreza/.pub-cache/hosted/pub.dev/ffmpeg_kit_flutter-6.0.3/
+path_provider=/Users/hamidreza/.pub-cache/hosted/pub.dev/path_provider-2.1.5/
+path_provider_android=/Users/hamidreza/.pub-cache/hosted/pub.dev/path_provider_android-2.2.12/
+path_provider_foundation=/Users/hamidreza/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/
+path_provider_linux=/Users/hamidreza/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/
+path_provider_windows=/Users/hamidreza/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/
